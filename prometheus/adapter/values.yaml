@@ -1,0 +1,4 @@
+prometheus:
+  url: http://prometheus-kube-prometheus-prometheus.prometheus.svc.cluster.local
+  port: 9090
+  path: ""

@@ -1,0 +1,8 @@
+prometheus:
+  prometheusSpec:
+    additionalScrapeConfigs:
+      - job_name: jobhander
+        honor_timestamps: true
+        scrape_interval: 15s
+        static_configs: 
+          - targets: ["jobhander.default.svc.cluster.local"]

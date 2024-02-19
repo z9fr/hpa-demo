@@ -1,0 +1,9 @@
+rules:
+- seriesQuery: 'jobs'
+  resources:
+    overrides:
+      namespace:
+        resource: namespace
+      pod:
+        resource: pod
+  metricsQuery: (sum(jobs))
