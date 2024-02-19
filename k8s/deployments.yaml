@@ -1,29 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: job-handler
-  labels:
-    app: web
+  name: jobhander
 spec:
   selector:
     matchLabels:
-      app: web
-  replicas: 5
-  strategy:
-    type: RollingUpdate
+      app: jobhandler
+      env: develop
+  replicas: 1
   template:
     metadata:
       labels:
-        app: web
+        app: jobhandler
+        env: develop
     spec:
       containers:
-       —name: nginx
-          image: nginx
-          resources:
-            limits:
-              memory: 200Mi
-            requests:
-              cpu: 100m
-              memory: 200Mi
-          ports:
-           —containerPort: 3030
+      - name: hpa-demo
+        image: 694201337911/hpa-demo:latest
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        env:
+        - name: RUST_LOG
+          value: "info"
+        - name: PORT
+          value: "80"
+        ports:
+        - containerPort: 80
