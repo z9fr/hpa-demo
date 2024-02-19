@@ -9,11 +9,4 @@ spec:
     name: jobhander
   minReplicas: 1
   maxReplicas: 10
-  metrics:
-  - type: Pods
-    pods:
-      name: jobs
-      target:
-        type: AverageValue
-        averageValue: 2
-
+  targetCPUUtilizationPercentage: 50
