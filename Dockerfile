@@ -18,8 +18,6 @@ RUN cargo build --release --bin standalone
 FROM debian:bookworm-slim AS runtime
 WORKDIR /app
 
-RUN apt update && apt install curl
-
 COPY --from=builder /app/target/release/standalone /usr/local/bin/app
 
 ENTRYPOINT ["/usr/local/bin/app"]
