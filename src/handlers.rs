@@ -1,3 +1,5 @@
+use std::thread::current;
+
 use axum::Json;
 use lazy_static::lazy_static;
 use prometheus::{register_int_counter, IntCounter};
@@ -37,7 +39,6 @@ pub async fn index(Json(payload): Json<CreateJobRequest>) -> Json<JobAddedResult
             // Introduce some delay to reduce the CPU usage
             tokio::time::sleep(tokio::time::Duration::from_millis(10)).await;
         }
-        log::info!("completed job");
     });
 
     let result = JobAddedResult {
