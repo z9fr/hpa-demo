@@ -28,6 +28,7 @@ async fn healthcheck() -> &'static str {
 }
 
 pub async fn run_server() -> Result<()> {
+    env_logger::try_init().ok();
     info!("starting the application");
 
     let comression_layer: CompressionLayer = CompressionLayer::new()
